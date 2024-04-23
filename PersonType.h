@@ -23,7 +23,7 @@ class PersonType
     
     
     //setters or mutators
-    void setPersonInfo(std::string firstName, std::string lastName, int newSSN);
+    void setPersonInfo(string firstName, string lastName, int newSSN);
     
     //other functionality
     void printName();
