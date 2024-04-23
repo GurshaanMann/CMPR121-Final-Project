@@ -16,11 +16,11 @@ PersonType::~PersonType()
 }
 
 //getters or accessors
-std::string PersonType::getFirstName()
+string PersonType::getFirstName()
 {
     return fName;
 }
-std::string PersonType::getLastName()
+string PersonType::getLastName()
 {
     return iName;
 }
@@ -30,7 +30,7 @@ int PersonType::getSSN()
 }
 
 //setters or mutators
-void PersonType::setPersonInfo(std::string firstName, std::string lastName, int newSSN);
+void PersonType::setPersonInfo(string firstName, string lastName, int newSSN);
 {
     fName = firstName;
     iName = lastName;
