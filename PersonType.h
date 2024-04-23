@@ -1,6 +1,5 @@
 
-
-
+#pragma once
 #ifndef PERSONTYPE_H
 #define PERSONTYPE_H
 class PersonType
