@@ -15,33 +15,34 @@ PersonType::~PersonType()
     
 }
 
-//getters or accessors
-string PersonType::getFirstName()
+
+
+std::string PersonType::getFirstName()
 {
     return fName;
 }
-string PersonType::getLastName()
+std::string PersonType::getLastName()
 {
-    return iName;
+    return lName;
 }
 int PersonType::getSSN()
 {
     return SSN;
 }
 
-//setters or mutators
-void PersonType::setPersonInfo(string firstName, string lastName, int newSSN);
+void PersonType::setPersonInfo(std::string userFirstName, std::string userLastName, int userSSN)
 {
-    fName = firstName;
-    iName = lastName;
-    SSN = newSSN;
+    fName = userFirstName;
+    lName = userLastName;
+    SSN = userSSN;
 }
+
 
 
 //other functionality
 void PersonType::printName()
 {
-  
+    std::cout << lName << ", " << fName << std::endl;
 }
 
 void PersonType::printPersonInfo()
@@ -51,5 +52,4 @@ void PersonType::printPersonInfo()
 
 void PersonType::printSSN()
 {
-    
 }
