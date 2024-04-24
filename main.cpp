@@ -10,9 +10,9 @@ int main()
     string lastName;
     int SSN;
 
-    cout << "Enter your first and last name";
+    cout << "Enter your first and last name: ";
     cin >> firstName >> lastName;
-    cout << "Enter your SSN";
+    cout << "Enter your SSN: ";
     cin >> SSN;
 
     user1.setPersonInfo(firstName, lastName, SSN);
