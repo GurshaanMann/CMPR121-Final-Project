@@ -18,6 +18,8 @@ class PersonType
 
     //Destructor
     ~PersonType();
+
+    bool operator==(const PersonType& other) const;
     
     std::string getFirstName();
     std::string getLastName();
