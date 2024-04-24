@@ -8,17 +8,8 @@ PersonType::PersonType()
 }
 
 //Overloaded constructor
-public:
+PersonType::PersonType(std::string userFirstName, std::string userLastName, int userSSN) : fName(userFirstName), lName(userLastName), SSN(userSSN) {}
 
-    bool operator==(const PersonType& other) const {
-        return SSN == other.SSN;
-    }
-
-private:
-    std::string fName;
-    std::string lName;
-    int SSN;
-};
 
 //Destructor
 PersonType::~PersonType()
