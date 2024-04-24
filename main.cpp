@@ -1,3 +1,4 @@
+#include <iostream>
 #include "PersonType.h"
 
 using namespace std;
@@ -19,5 +20,6 @@ int main()
     user1.printName();
     user1.printPersonInfo();
     user1.printSSN();
-    
+
+    return 0;
 }
