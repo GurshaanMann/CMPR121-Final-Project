@@ -2,6 +2,9 @@
 #pragma once
 #ifndef PERSONTYPE_H
 #define PERSONTYPE_H
+#include <string>
+#include <iostream>
+
 class PersonType
 {
     //public interface
@@ -15,14 +18,11 @@ class PersonType
     //Destructor
     ~PersonType();
     
-    //getters or accessors
-    string getFirstName();
-    string getLastName();
+    std::string getFirstName();
+    std::string getLastName();
     int getSSN();
     
-    
-    //setters or mutators
-    void setPersonInfo(string firstName, string lastName, int newSSN);
+    void setPersonInfo(std::string userFirstName, std::string userLastName, int userSSN);
     
     //other functionality
     void printName();
@@ -30,8 +30,8 @@ class PersonType
     void printSSN();
     
     private:
-    string fName;
-    string iName;
+    std::string fName;
+    std::string lName;
     int SSN;
     
 };
