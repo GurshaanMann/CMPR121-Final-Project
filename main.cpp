@@ -8,12 +8,12 @@ int main()
     PersonType user1;
     string firstName;
     string lastName;
-    int number;
+    int SSN;
     
     cout << "Enter your first and last name";
     cin >> firstName >> lastName;
     cout << "Enter your SSN";
-    cin >> number;
+    cin >> SSN;
     
     user1.setPersonInfo(firstName, lastName, number);
     
