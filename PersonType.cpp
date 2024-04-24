@@ -1,58 +1,46 @@
-#include "PersonType.h"
+#pragma once
+#ifndef PERSONTYPE_H
+#define PERSONTYPE_H
+#include <string>
+#include <iostream>
 
-
-//default constructor
-PersonType::PersonType()
+class PersonType
 {
-    SSN = 0;
-}
+    //public interface
+public:
 
-//Overloaded constructor
-PersonType::PersonType(std::string userFirstName, std::string userLastName, int userSSN) : fName(userFirstName), lName(userLastName), SSN(userSSN) {}
+    //default constructor
+    PersonType();
 
+    //Overloaded constructor
+    PersonType(std::string userFirstName, std::string userLastName, int userSSN);
 
-//Destructor
-PersonType::~PersonType()
-{
-    
-}
+    //Destructor
+    ~PersonType();
 
+    bool operator==(const PersonType& other) const;
 
+    std::string getFirstName();
+    std::string getLastName();
+    int getSSN();
 
-std::string PersonType::getFirstName()
-{
-    return fName;
-}
-std::string PersonType::getLastName()
-{
-    return lName;
-}
-int PersonType::getSSN()
-{
-    return SSN;
-}
+    void setPersonInfo(std::string userFirstName, std::string userLastName, int userSSN);
 
-void PersonType::setPersonInfo(std::string userFirstName, std::string userLastName, int userSSN)
-{
-    fName = userFirstName;
-    lName = userLastName;
-    SSN = userSSN;
-}
+    void printName() const;
 
+    //other functionality
 
+    void printName();
+    void printPersonInfo() const;
+    void printPersonInfo();
+    void printSSN();
 
-//other functionality
-void PersonType::printName() const{
-    std::cout << lName << ", " << fName << std::endl;
-}
+    void printSSN() const;
 
-void PersonType::printPersonInfo() const {
-    printSSN();
-    std::cout << fName << " " << lName << std::endl;
-}
+private:
+    std::string fName;
+    std::string lName;
+    int SSN;
 
-void PersonType::printSSN() const{
-     std::cout << std::setw(3) << std::setfill('0') << (SSN / 1000000) << "-"
-              << std::setw(2) << std::setfill('0') << (SSN / 10000) % 100 << "-"
-              << std::setw(4) << std::setfill('0') << SSN % 10000 << std::endl;
-}
+};
+#endif
