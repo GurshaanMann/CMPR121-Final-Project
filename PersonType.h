@@ -26,16 +26,13 @@ public:
 
     void setPersonInfo(std::string userFirstName, std::string userLastName, int userSSN);
 
-    void printName() const;
 
     //other functionality
 
     void printName();
-    void printPersonInfo() const;
     void printPersonInfo();
     void printSSN();
 
-    void printSSN() const;
 
 private:
     std::string fName;
