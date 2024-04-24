@@ -7,34 +7,40 @@
 class PersonType
 {
     //public interface
-    public:
-    
+public:
+
     //default constructor
     PersonType();
-    
+
     //Overloaded constructor
-    PersonType::PersonType(std::string userFirstName, std::string userLastName, int userSSN) : fName(userFirstName), lName(userLastName), SSN(userSSN) {}
+    PersonType(std::string userFirstName, std::string userLastName, int userSSN);
 
     //Destructor
     ~PersonType();
 
     bool operator==(const PersonType& other) const;
-    
+
     std::string getFirstName();
     std::string getLastName();
     int getSSN();
-    
+
     void setPersonInfo(std::string userFirstName, std::string userLastName, int userSSN);
-    
+
+    void printName() const;
+
     //other functionality
+
     void printName();
+    void printPersonInfo() const;
     void printPersonInfo();
     void printSSN();
-    
-    private:
+
+    void printSSN() const;
+
+private:
     std::string fName;
     std::string lName;
     int SSN;
-    
+
 };
 #endif
