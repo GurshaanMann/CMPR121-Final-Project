@@ -7,7 +7,7 @@ int main()
     PersonType user1;
     string firstName;
     string lastName;
-    double number;
+    int number;
     
     cout << "Enter your first and last name";
     cin >> firstName >> lastName;
