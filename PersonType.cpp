@@ -51,15 +51,12 @@ void PersonType::printName(){
     std::cout << lName << ", " << fName << std::endl;
 }
 
-void PersonType::printPersonInfo() {
-    
-    std::cout << fName << " " << lName << std::endl;
-}
-
-
-
 void PersonType::printSSN() {
     std::cout << std::setw(3) << std::setfill('0') << (SSN / 1000000) << "-"
         << std::setw(2) << std::setfill('0') << (SSN / 10000) % 100 << "-"
-        << std::setw(4) << std::setfill('0') << SSN % 10000 << std::endl;
+        << std::setw(4) << std::setfill('0') << SSN % 10000 << " ";
+}
+void PersonType::printPersonInfo() {
+    
+    std::cout << fName << " " << lName << std::endl;
 }
