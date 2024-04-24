@@ -18,8 +18,9 @@ int main()
     user1.setPersonInfo(firstName, lastName, SSN);
 
     user1.printName();
-    user1.printPersonInfo();
     user1.printSSN();
+    user1.printPersonInfo();
+    
 
     return 0;
 }
