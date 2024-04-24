@@ -14,7 +14,8 @@ class PersonType
     PersonType();
     
     //Overloaded constructor
-    
+    PersonType::PersonType(std::string userFirstName, std::string userLastName, int userSSN) : fName(userFirstName), lName(userLastName), SSN(userSSN) {}
+
     //Destructor
     ~PersonType();
     
