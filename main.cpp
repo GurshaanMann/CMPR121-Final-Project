@@ -1,4 +1,3 @@
-#include <iostream>
 #include "PersonType.h"
 
 using namespace std;
