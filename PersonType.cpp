@@ -17,13 +17,6 @@ PersonType::~PersonType()
 
 }
 
-bool PersonType::operator==(const PersonType& other) const
-{
-    return false;
-}
-
-
-
 std::string PersonType::getFirstName()
 {
     return fName;
