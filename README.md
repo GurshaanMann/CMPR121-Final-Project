@@ -1,3 +1,5 @@
+NEED HELP WITH THESE
+{{{{{{{{
 Member variables (private in candidatetype class)
 An integer that stores the total number of votes. 
 An array of integers that has capacity of NUM_Of_CAMPUSES.
@@ -34,3 +36,4 @@ Prints the candidate’s vote for the specified Campus:
 Lastname, Firstname
 Campus # total votes: ##
 Note that “#” should be replaced with an integer.
+}}}}}}}}
