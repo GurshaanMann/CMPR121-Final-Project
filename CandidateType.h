@@ -2,9 +2,6 @@
 #ifndef CANDIDATETYPE_H
 #define CANDIDATETYPE_H
 #include "PersonType.h"
-#include <string>
-#include <iostream>
-#include <iomanip>
 
 const int NUM_OF_CAMPUSES = 4;
 
@@ -14,41 +11,25 @@ class CandidateType : public PersonType
 public:
 
     //default constructor
-    CandidateType();
-
-    //Overloaded constructor
-    //CandidateType(std::string userFirstName, std::string userLastName, int userSSN);
-
-    //Destructor
-    ~CandidateType();
-
-    
-
-    //void setPersonInfo(std::string userFirstName, std::string userLastName, int userSSN);
-
-    //accessors
-    
+    CandidateType();    
 
     //other functionality
-    int updateVotesByCampus(const int NUM_OF_CAMPUSES, int totalVotes);
+    void updateVotesByCampus(const int campusNumber, int totalVotesOfCampus);
 
-    int getTotalVotes();
-    int getVotesByCampus();
+    int getTotalVotes() const;
+    int getVotesByCampus(const int campusNumber);
     void printCandidateInfo();
-    void printTotalCandidateVotes();
+    void printCandidateTotalVotes() const;
     void printCandidateCampusVotes(const int NUM_OF_CAMPUSES);
-
+    
+    //Destructor
+    ~CandidateType();
 
 private:
     
     int totalVotes;
     int array[NUM_OF_CAMPUSES] = {1,2,3,4};
-    struct College
-    {
-        std::string name
-    };
 
 
 };
 #endif
-
