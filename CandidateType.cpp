@@ -2,41 +2,48 @@
 
 CandidateType::CandidateType()
 {
-	totalVotes = 0;
-	array[NUM_OF_CAMPUSES] = {};
+    totalVotes = 0;
+    array[0] = {0};
+    array[1] = {0};
+    array[2] = {0};
+    array[3] = {0};
 }
 
-CandidateType::~CandidateType()
+void CandidateType::updateVotesByCampus(const int campusNumber, int totalVotesOfCampus)
+//Takes in campus number and votes placed for campus updates campus total & total for all campuses.
 {
-
+    array[campusNumber - 1] += totalVotesOfCampus;
+    totalVotes += totalVotesOfCampus;
 }
 
-int CandidateType::updateVotesByCampus(const int NUM_OF_CAMPUSES, int totalVotes)
+int CandidateType::getTotalVotes() const //returns totalVotes;
 {
-
+    return totalVotes;
 }
 
-int CandidateType::getTotalVotes()
+int CandidateType::getVotesByCampus(const int campusNumber) //returns total votes for campus
 {
-	return totalVotes;
+    return array[campusNumber - 1];
 }
 
-int CandidateType::getVotesByCampus()
+void CandidateType::printCandidateInfo()  //prints SSN, First & last name
 {
-	return 
+    printPersonInfo();
 }
 
-void CandidateType::printCandidateInfo()
+void CandidateType:: printCandidateTotalVotes() const //prints name and how many votes they got from all the campuses
 {
-
+    printName();
+    std::cout << std::setw(31) << "Total Votes(all campuses) : " << totalVotes;
 }
 
-void CandidateType:: printTotalCandidateVotes()
+void CandidateType::printCandidateCampusVotes(const int NUM_OF_CAMPUSES) //prints name and how many votes they got from a campus
 {
-
+    printName();
+    std::cout << std::setw(10) << "Campus " << NUM_OF_CAMPUSES << " total votes: " << array[NUM_OF_CAMPUSES - 1];
 }
 
-void CandidateType::printCandidateCampusVotes(const int NUM_OF_CAMPUSES)
+CandidateType::~CandidateType() //destructor
 {
 
 }
