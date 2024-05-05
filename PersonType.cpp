@@ -1,14 +1,19 @@
+
 #include "PersonType.h"
 
-
 //default constructor
-PersonType::PersonType()
+PersonType::PersonType() 
 {
     SSN = 0;
 }
 
 //Overloaded constructor
-PersonType::PersonType(std::string userFirstName, std::string userLastName, int userSSN) : fName(userFirstName), lName(userLastName), SSN(userSSN) {}
+PersonType::PersonType(std::string userFirstName, std::string userLastName, int userSSN)
+{
+    fName = userFirstName;
+    lName = userLastName;
+    SSN = userSSN;
+}
 
 
 //Destructor
@@ -17,20 +22,20 @@ PersonType::~PersonType()
 
 }
 
-std::string PersonType::getFirstName()
+std::string PersonType::getFirstName() const
 {
     return fName;
 }
-std::string PersonType::getLastName()
+std::string PersonType::getLastName() const
 {
     return lName;
 }
-int PersonType::getSSN()
+int PersonType::getSSN() const
 {
     return SSN;
 }
 
-void PersonType::setPersonInfo(std::string userFirstName, std::string userLastName, int userSSN)
+void PersonType::setPersonInfo(std::string userFirstName, std::string userLastName, int userSSN) //updates private variables
 {
     fName = userFirstName;
     lName = userLastName;
@@ -40,7 +45,7 @@ void PersonType::setPersonInfo(std::string userFirstName, std::string userLastNa
 
 
 //other functionality
-void PersonType::printName(){
+void PersonType::printName() const{ 
     std::cout << lName << ", " << fName << std::endl;
 }
 
