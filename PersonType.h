@@ -4,7 +4,6 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
-
 class PersonType
 {
     //public interface
@@ -19,16 +18,16 @@ public:
     //Destructor
     ~PersonType();
 
-    std::string getFirstName();
-    std::string getLastName();
-    int getSSN();
+    std::string getFirstName() const;
+    std::string getLastName() const;
+    int getSSN() const;
 
     void setPersonInfo(std::string userFirstName, std::string userLastName, int userSSN);
 
 
     //other functionality
 
-    void printName();
+    void printName() const;
     void printPersonInfo();
     void printSSN();
 
