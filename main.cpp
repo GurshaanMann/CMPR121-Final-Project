@@ -1,4 +1,3 @@
-
 #include "PersonType.h"
 #include "CandidateType.h"
 
