@@ -10,8 +10,8 @@ int main()
     string firstName;
     string lastName;
     int SSN;
-    int campusNumber;
-    int votesCasted;
+    int campus;
+    int votesPlaced;
     
     cout << "Enter your first and last name: ";
     cin >> firstName >> lastName;
@@ -24,15 +24,16 @@ int main()
     user1.printName();
     user1.printPersonInfo();
     cout << "---------------\nPart B:\n";
-    cout << "Enter Campus Number and amount of votes you want to cast: ";
-    cin >> campusNumber >> votesCasted;
-    user2.updateVotesByCampus(campusNumber, votesCasted); //updates by adding votes to campus
-    cout << endl << endl;
-    user2.printCandidateCampusVotes(campusNumber); //prints how many votes the campus has
-    cout << endl << endl;
-    user2.printCandidateTotalVotes(); //prints total votes
-    cout << endl;
-    user2.printCandidateInfo();
     
+    cout << "Enter the campus number and then enter amount of votes you want to place.\n1.Santiago Canyon College, 2. Santa Ana College, 3. Orange Coast College, 4. Coastline Community College.\n";
+    cin >> campus >> votesPlaced;
+    
+    user2.updateVotesByCampus(campus, votesPlaced); //updates by adding votes to campus
+        cout << endl << endl;
+        user2.printCandidateCampusVotes(campus); //prints how many votes the campus has
+        cout << endl << endl;
+        user2.printCandidateTotalVotes(); //prints total votes
+        cout << endl << endl;
+        user2.printCandidateInfo(); //prints candidate SSN formatted, first last name
     return 0;
 }
