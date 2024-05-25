@@ -20,22 +20,22 @@ private:
     Node* link;        //pointer that points to next node
 };
 
-class CandidateList
+class CandidateList //potentially inherit CandidateType
 {
     public:
     CandidateList(); // constructor
-    void addCandidate(const CandidateType& newCandidate);
-    int getWinner() const; //accessor
-    void searchCandidate(int SSN);
-    void printCandidateName(int SSN);
-    void printAllCandidates();
-    void printCandidateCampusVotes();
-    void printCandidateTotalVotes();
-    void destroyList();
+    void addCandidate(const CandidateType& newCandidate); //creates a new node that stores object from candidateType class.
+    int getWinner() const; //Checks to see which node has highest total votes and awards it as winner (aaccessor)
+    bool searchCandidate(int SSN); //Uses the parameter to search for candidate and prints there SSN
+    void printCandidateName(int SSN); //Uses the parameter to search for candidate and then prints there name
+    void printAllCandidates(); //Passes through each node printing the candidates name.
+    void printCandidateCampusVotes(int SSN, int divisonNumber); //
+    void printCandidateTotalVotes(int SSN); //Uses the parameter to search for candidate and then print there total votes
+    void destroyList(); //destroys node list and is called in the destructor
     ~CandidateList();//destructor
     
     private:
-    Node *first; //points to the first node and will traverse the list
+    Node *first; //points to the first node and will be used for the start of list traversal
     Node *last; //points to last node (null)
     int count; //stores the number of nodes in the list
 };
