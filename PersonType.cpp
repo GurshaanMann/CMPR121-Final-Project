@@ -1,4 +1,3 @@
-
 #include "PersonType.h"
 
 //default constructor
