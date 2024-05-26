@@ -33,7 +33,8 @@ class CandidateList //potentially inherit CandidateType
     void printCandidateTotalVotes(int SSN); //Uses the parameter to search for candidate and then print there total votes
     void destroyList(); //destroys node list and is called in the destructor
     ~CandidateList();//destructor
-    
+    //CandidateList(const CandidateList& object); //copy constructor
+    //CandidateList& operator=(const CandidateList& rightSide); //overloaded assignment operator.
     private:
     Node *first; //points to the first node and will be used for the start of list traversal
     Node *last; //points to last node (null)
