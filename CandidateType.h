@@ -1,3 +1,8 @@
+/*
+ 
+ name header
+ 
+ */
 #pragma once
 #ifndef CANDIDATETYPE_H
 #define CANDIDATETYPE_H
@@ -19,8 +24,8 @@ public:
     int getTotalVotes() const;
     int getVotesByCampus(const int campusNumber);
     void printCandidateInfo();
-    void printCandidateTotalVotes() const;
-    void printCandidateCampusVotes(const int NUM_OF_CAMPUSES);
+    void printCandidateTotalVotes() const; 
+    void printCandidateCampusVotes(const int NUM_OF_CAMPUSES) const;
     
     //Destructor
     ~CandidateType();
@@ -33,3 +38,4 @@ private:
 
 };
 #endif
+
