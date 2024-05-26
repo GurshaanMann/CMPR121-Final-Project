@@ -70,8 +70,12 @@ void processChoice(CandidateList& candidateList)
 			{
 				candidateList.printCandidateName(ssn);
 				//cout << endl;
-				for (int i = 1; i <= NUM_OF_CAMPUSES; ++i)
-					candidateList.printCandidateCampusVotes(ssn, i);
+				for (int i = 0; i < NUM_OF_CAMPUSES; ++i)
+                {
+                    cout << "Campus " << (i+1) << ": ";
+                    candidateList.printCandidateCampusVotes(ssn, i);
+                    cout << " ";
+                }
 			}
 			cout << endl;
 			break;
@@ -111,7 +115,7 @@ void processChoice(CandidateList& candidateList)
 			cout << endl;
 			cout << "FINAL RESULTS" << endl;
 			cout << "-------------" << endl;
-		//candidateList.printFinalResults();
+		candidateList.printFinalResults();
 		cout << endl;
 		break;
 
