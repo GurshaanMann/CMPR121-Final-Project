@@ -1,6 +1,6 @@
 //
 //  CandidateList.cpp
-//  CMPR121
+//  CMPR120
 //
 //  Created by Muhammad Jafri on 5/11/24.
 //
@@ -15,14 +15,14 @@ CandidateList::CandidateList() // constructor
 }
 void CandidateList::addCandidate(const CandidateType& newCandidate)
 {
-    Node* nodeForNewCandidate = new Node();
-    nodeForNewCandidate->setCandidate(newCandidate);
-    if (first == nullptr)
+    Node* nodeForNewCandidate = new Node(); //creates a new node which will store data from candidateType object
+    nodeForNewCandidate->setCandidate(newCandidate); //Stores the data from candidateType object inside the node
+    if (first == nullptr) //if nothing is in the list yet
     {
         first = nodeForNewCandidate;
         last = nodeForNewCandidate;
     }
-    else
+    else //adds the new candidate to the end of the list
     {
         last->setLink(nodeForNewCandidate);
         last = nodeForNewCandidate;
@@ -50,7 +50,7 @@ int CandidateList::getWinner() const //accessor
         }
         current = current->getLink();
     }
-
+    std::cout << winnerCandidate->getCandidate().getSSN();
     return winnerCandidate->getCandidate().getSSN(); //returns the candidates who wons SSN
     
 }
@@ -63,7 +63,7 @@ bool CandidateList::searchCandidate(int SSN)
         return false;
     }
     
-    while (current->getCandidate().getSSN() != SSN) //repeats until SSN found
+    while (current != nullptr) //repeats until its at the end of list
     {
         if (current->getCandidate().getSSN() == SSN) //if SSN is found
         {
@@ -83,7 +83,7 @@ void CandidateList::printCandidateName(int SSN)
         std::cout << "=> List is empty \n";
     }
     
-    while (current->getCandidate().getSSN() != SSN) //repeats until SSN found
+    while (current != nullptr) //repeats until SSN found
     {
         if (current == nullptr)
         {
@@ -116,9 +116,19 @@ void CandidateList::printAllCandidates()
 
 void CandidateList::printCandidateCampusVotes(int SSN, int divisonNumber)
 {
+    Node* current = first;//node that will traverse the list
     if (count == 0) //Checks to see if there are any candidates/nodes in the list
     {
         std::cout << "=> List is empty \n";
+    }
+    
+    while (current != nullptr) //Repeats until its at end of list
+    {
+        if (current->getCandidate().getSSN() == SSN)
+        {
+            current->getCandidate().getVotesByCampus(divisonNumber);
+        }
+        current = current->getLink();
     }
 }
 
@@ -130,11 +140,11 @@ void CandidateList::printCandidateTotalVotes(int SSN)
         std::cout << "=> List is empty \n";
     }
     
-    while (current->getCandidate().getSSN() != SSN) //runs as long as SSN isn't found
+    while (current != nullptr) //Repeats until its at end of list
     {
         if (current->getCandidate().getSSN() == SSN) //if SSN is found
         {
-            current->getCandidate().getTotalVotes();
+            current->getCandidate().getTotalVotes(); //prints total votes for the candidate
         }
         current = current->getLink();
     }
@@ -144,7 +154,7 @@ void CandidateList::destroyList() //used in destructor
 {
     
     Node* current = first; //node that will traverse the list
-    while (current != nullptr)
+    while (current != nullptr) //runs as long as current isn't null (deletes the list).
     {
         first = first -> getLink();
         delete current;
@@ -157,5 +167,30 @@ void CandidateList::destroyList() //used in destructor
 
 CandidateList::~CandidateList() //destructor
 {
-    destroyList();
+    destroyList(); //deletes the list
 }
+
+/*
+ CandidateList::CandidateList(const CandidateList& object) //copy constructor NOT CORRECT.
+{
+    count = object.count;
+    first = object.first;
+    last = object.last;
+}
+*/
+/*
+ CandidateList& CandidateList::operator=(const CandidateList& rightSide) //overloaded assignment operator. NOT CORRECT.
+{
+    if (this != &rightSide)
+    {
+        count = rightSide.count;
+        first = rightSide.first;
+        last = rightSide.last;
+    }
+    else
+    {
+        std::cout << "ERROR: self assignment occured\n";
+    }
+    return *this;
+}
+*/
