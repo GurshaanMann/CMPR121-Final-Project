@@ -1,3 +1,6 @@
+/*
+    Name header
+*/
 #include "PersonType.h"
 
 //default constructor
