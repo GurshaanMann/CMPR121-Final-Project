@@ -1,3 +1,8 @@
+/*
+ 
+ name header
+ 
+ */
 #include "CandidateType.h"
 
 CandidateType::CandidateType()
@@ -5,14 +10,14 @@ CandidateType::CandidateType()
     totalVotes = 0;
     for (int i = 0; i < NUM_OF_CAMPUSES; i++)
     {
-        array[i] = 0; //initalizes all the campuses votes to 0
+        array[i] = 0; //initalizes all the campuses/elements votes to 0
     }
 }
 
 void CandidateType::updateVotesByCampus(const int campusNumber, int totalVotesOfCampus)
 //Takes in campus number and votes placed for campus updates campus total & total for all campuses.
 {
-    array[campusNumber - 1] += totalVotesOfCampus;
+    array[campusNumber] += totalVotesOfCampus;
     totalVotes += totalVotesOfCampus;
 }
 
@@ -23,7 +28,7 @@ int CandidateType::getTotalVotes() const //returns totalVotes;
 
 int CandidateType::getVotesByCampus(const int campusNumber) //returns total votes for campus
 {
-    return array[campusNumber - 1];
+    return array[campusNumber];
 }
 
 void CandidateType::printCandidateInfo()  //prints SSN, First & last name
@@ -31,16 +36,16 @@ void CandidateType::printCandidateInfo()  //prints SSN, First & last name
     printPersonInfo();
 }
 
-void CandidateType::printCandidateTotalVotes() const //prints name and how many votes they got from all the campuses
+void CandidateType::printCandidateTotalVotes() const //prints name and how many votes they got from all the campuses 
 {
     printName();
-    std::cout << std::setw(31) << "Total Votes(all campuses) : " << totalVotes;
+    std::cout << std::setw(31) << "Total Votes(all campuses) : " << totalVotes << std::endl << std::endl;
 }
 
-void CandidateType::printCandidateCampusVotes(const int NUM_OF_CAMPUSES) //prints name and how many votes they got from a campus
+void CandidateType::printCandidateCampusVotes(const int NUM_OF_CAMPUSES) const //prints name and how many votes they got from a campus
 {
     printName();
-    std::cout << std::setw(10) << "Campus " << NUM_OF_CAMPUSES << " total votes: " << array[NUM_OF_CAMPUSES - 1];
+    std::cout << std::setw(10) << "Campus " << NUM_OF_CAMPUSES << " total votes: " << array[NUM_OF_CAMPUSES];
 }
 
 CandidateType::~CandidateType() //destructor
