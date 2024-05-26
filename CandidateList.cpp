@@ -13,22 +13,24 @@ CandidateList::CandidateList() // constructor
     first = nullptr;
     last = nullptr;
 }
+
 void CandidateList::addCandidate(const CandidateType& newCandidate)
 {
     Node* nodeForNewCandidate = new Node(); //creates a new node which will store data from candidateType object
     nodeForNewCandidate->setCandidate(newCandidate); //Stores the data from candidateType object inside the node
     if (first == nullptr) //if nothing is in the list yet
     {
-        first = nodeForNewCandidate;
-        last = nodeForNewCandidate;
+        first = nodeForNewCandidate; // adds new candidate
+        last = nodeForNewCandidate; //adds new candidate
     }
     else //adds the new candidate to the end of the list
     {
-        last->setLink(nodeForNewCandidate);
-        last = nodeForNewCandidate;
+        last->setLink(nodeForNewCandidate); //moves last to a nullptr
+        last = nodeForNewCandidate; //puts new candidate in the nullptr
     }
     count++; //increments everytime addCandidate is called indicating a new candidate in list
 }
+
 int CandidateList::getWinner() const //accessor
 {
 
@@ -41,7 +43,7 @@ int CandidateList::getWinner() const //accessor
         return 0;
     }
     
-    for (int i = 0; i < count; i++) //stops when it reaches the end of the list
+    for (int i = 1; i <= count; i++) //stops when it reaches the end of the list
     {
         if (current->getCandidate().getTotalVotes() > winnerCandidate->getCandidate().getTotalVotes()) //if the current node has more than the
                                                                                                        //winner candidate node.
@@ -50,11 +52,10 @@ int CandidateList::getWinner() const //accessor
         }
         current = current->getLink();
     }
-    std::cout << winnerCandidate->getCandidate().getSSN();
-    return winnerCandidate->getCandidate().getSSN(); //returns the candidates who wons SSN
-    
+    return winnerCandidate->getCandidate().getSSN(); //returns the winner candidates SSN
 }
-bool CandidateList::searchCandidate(int SSN)
+
+bool CandidateList::searchCandidate(int SSN) const
 {
     Node* current = first; //node that will traverse the list
     if (count == 0) //Checks to see if there are any candidates/nodes in the list
@@ -75,7 +76,7 @@ bool CandidateList::searchCandidate(int SSN)
     return false;
 }
 
-void CandidateList::printCandidateName(int SSN)
+void CandidateList::printCandidateName(int SSN) const //***----FIX SSN NOT IN THE LIST***----//
 {
     Node* current = first; //node that will traverse the list
     if (count == 0) //Checks to see if there are any candidates/nodes in the list
@@ -99,7 +100,7 @@ void CandidateList::printCandidateName(int SSN)
     
 }
 
-void CandidateList::printAllCandidates()
+void CandidateList::printAllCandidates() const
 {
     Node* current = first; //node that will traverse the list
     if (count == 0) //Checks to see if there are any candidates/nodes in the list
@@ -107,14 +108,14 @@ void CandidateList::printAllCandidates()
         std::cout << "=> List is empty \n";
     }
     
-    for (int i = 0; i < count; i++) //loops till it goes through the whole list
+    for (int i = 1; i <= count; i++) //loops till it goes through the whole list
     {
         current->getCandidate().printCandidateInfo(); //prints candidate info
         current = current->getLink();
     }
 }
 
-void CandidateList::printCandidateCampusVotes(int SSN, int divisonNumber)
+void CandidateList::printCandidateCampusVotes(int SSN, int divisonNumber) const
 {
     Node* current = first;//node that will traverse the list
     if (count == 0) //Checks to see if there are any candidates/nodes in the list
@@ -126,13 +127,13 @@ void CandidateList::printCandidateCampusVotes(int SSN, int divisonNumber)
     {
         if (current->getCandidate().getSSN() == SSN)
         {
-            current->getCandidate().getVotesByCampus(divisonNumber);
+            std::cout << current->getCandidate().getVotesByCampus(divisonNumber);
         }
         current = current->getLink();
     }
 }
 
-void CandidateList::printCandidateTotalVotes(int SSN)
+void CandidateList::printCandidateTotalVotes(int SSN) const
 {
     Node* current = first;//node that will traverse the list
     if (count == 0) //Checks to see if there are any candidates/nodes in the list
@@ -144,7 +145,7 @@ void CandidateList::printCandidateTotalVotes(int SSN)
     {
         if (current->getCandidate().getSSN() == SSN) //if SSN is found
         {
-            current->getCandidate().getTotalVotes(); //prints total votes for the candidate
+            std::cout << current->getCandidate().getTotalVotes(); //prints total votes for the candidate
         }
         current = current->getLink();
     }
@@ -194,3 +195,18 @@ CandidateList::~CandidateList() //destructor
     return *this;
 }
 */
+
+void CandidateList::printFinalResults() const
+{
+    Node* current = first; //node that will traverse the list
+    if (count == 0) //Checks to see if there are any candidates/nodes in the list
+    {
+        std::cout << "=> List is empty \n";
+    }
+    
+    for (int i = 1; i <= count; i++) //loops till it goes through the whole list
+    {
+        current->getCandidate().printCandidateTotalVotes(); //prints candidate info
+        current = current->getLink();
+    }
+}
