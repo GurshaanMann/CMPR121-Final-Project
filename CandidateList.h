@@ -1,9 +1,14 @@
 /*
  
- header
+ Gurshaan Maan, Muhammad Jafri, Giovanni Flores, Braiden Nagele
+
+ CMPR 121 - SPRING 2024
+ June 2 2024
+
+ Final Project Submission
  
- 
- */
+ Collaborations: https://www.youtube.com/watch?v=RNMIDj62o_o&t=955s, https://www.youtube.com/watch?v=HKfj0l7ndbc, https://www.youtube.com/watch?v=rJlJ8qqVm3k, class notes, chatgpt, Professor Alweheiby
+*/
 #pragma once
 #ifndef CandidateList_h
 #define CandidateList_h
@@ -21,8 +26,8 @@ public:
     void setLink(Node* theLink) { link = theLink; }
     ~Node() {}
 private:
-    CandidateType candidate;
-    Node* link;        //pointer that points to next node
+    CandidateType candidate; //CandiateType object
+    Node* link; //pointer that points to next node
 };
 
 class CandidateList
@@ -38,9 +43,10 @@ class CandidateList
     void printCandidateTotalVotes(int SSN) const; //Uses the parameter to search for candidate and then print there total votes
     void destroyList(); //destroys node list and is called in the destructor
     ~CandidateList();//destructor
-    //CandidateList(const CandidateList& object); //copy constructor
-    //CandidateList& operator=(const CandidateList& rightSide); //overloaded assignment operator.
-    void printFinalResults() const;
+    CandidateList(const CandidateList& object); //copy constructor
+    CandidateList& operator=(const CandidateList& rightSide); //overloaded assignment operator.
+    void printFinalResults() const; //Passes through each node printing the final result of all candidates
+    
     private:
     Node *first; //points to the first node and will be used for the start of list traversal
     Node *last; //points to last node (null)
