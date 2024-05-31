@@ -223,7 +223,7 @@ CandidateList::CandidateList(const CandidateList& object) //copy constructor
 
 
 
- CandidateList& CandidateList::operator=(const CandidateList& rightSide) //overloaded assignment operator. NOT CORRECT.
+ CandidateList& CandidateList::operator=(const CandidateList& rightSide) //overloaded assignment operator. 
 {
     if (this != &rightSide)
     {
