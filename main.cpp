@@ -11,7 +11,6 @@
 */
 
 #include "InputHandler.h"
-#include "CandidateList.h"
 using namespace std;
 
 void displayMenu();
