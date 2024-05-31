@@ -7,7 +7,7 @@
 
  Final Project Submission
  
- Collaborations: https://www.youtube.com/watch?v=RNMIDj62o_o&t=955s, https://www.youtube.com/watch?v=HKfj0l7ndbc, https://www.youtube.com/watch?v=rJlJ8qqVm3k, class notes, chatgpt, Professor Alweheiby
+ Collaborations: Youtube, class notes, chatgpt, Professor Alweheiby
 */
 #include "CandidateType.h"
 
