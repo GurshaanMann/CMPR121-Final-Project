@@ -1,9 +1,14 @@
-//
-//  CandidateList.cpp
-//  CMPR120
-//
-//  Created by Muhammad Jafri on 5/11/24.
-//
+/*
+ 
+ Gurshaan Maan, Muhammad Jafri, Giovanni Flores, Braiden Nagele
+
+ CMPR 121 - SPRING 2024
+ June 2 2024
+
+ Final Project Submission
+ 
+ Collaborations: https://www.youtube.com/watch?v=RNMIDj62o_o&t=955s, https://www.youtube.com/watch?v=HKfj0l7ndbc, https://www.youtube.com/watch?v=rJlJ8qqVm3k, class notes, chatgpt, Professor A
+*/
 
 #include "CandidateList.h"
 
@@ -17,18 +22,25 @@ CandidateList::CandidateList() // constructor
 void CandidateList::addCandidate(const CandidateType& newCandidate)
 {
     Node* nodeForNewCandidate = new Node(); //creates a new node which will store data from candidateType object
-    nodeForNewCandidate->setCandidate(newCandidate); //Stores the data from candidateType object inside the node
-    if (first == nullptr) //if nothing is in the list yet
+    if (!nodeForNewCandidate) //checks to see if allocation worked correctly
     {
-        first = nodeForNewCandidate; // adds new candidate
-        last = nodeForNewCandidate; //adds new candidate
+        std::cout << "Error: Memory Allocation Failed\n";
     }
-    else //adds the new candidate to the end of the list
+    else
     {
-        last->setLink(nodeForNewCandidate); //moves last to a nullptr
-        last = nodeForNewCandidate; //puts new candidate in the nullptr
+        nodeForNewCandidate->setCandidate(newCandidate); //Stores the data from candidateType object inside the node
+        if (first == nullptr) //if nothing is in the list yet
+        {
+            first = nodeForNewCandidate; // adds new candidate
+            last = nodeForNewCandidate; //adds new candidate
+        }
+        else //adds the new candidate to the end of the list
+        {
+            last->setLink(nodeForNewCandidate); //moves last to a nullptr
+            last = nodeForNewCandidate; //puts new candidate in the nullptr
+        }
+        count++; //increments everytime addCandidate is called indicating a new candidate in list
     }
-    count++; //increments everytime addCandidate is called indicating a new candidate in list
 }
 
 int CandidateList::getWinner() const //accessor
@@ -76,9 +88,10 @@ bool CandidateList::searchCandidate(int SSN) const
     return false;
 }
 
-void CandidateList::printCandidateName(int SSN) const //***----FIX SSN NOT IN THE LIST***----//
+void CandidateList::printCandidateName(int SSN) const
 {
     Node* current = first; //node that will traverse the list
+    bool candidateFound = false;
     if (count == 0) //Checks to see if there are any candidates/nodes in the list
     {
         std::cout << "=> List is empty \n";
@@ -86,16 +99,16 @@ void CandidateList::printCandidateName(int SSN) const //***----FIX SSN NOT IN TH
     
     while (current != nullptr) //repeats until SSN found
     {
-        if (current == nullptr)
-        {
-            std::cout << "=> SSN not in the list \n";
-        }
-        
         if (current->getCandidate().getSSN() == SSN) //if SSN of node equals the SSN trying to be found
         {
             current->getCandidate().printName(); //prints candidate name
+            candidateFound = true;
         }
         current = current->getLink();
+    }
+    if (candidateFound == false)
+    {
+        std::cout << "=> SSN not in the list \n";
     }
     
 }
@@ -157,36 +170,89 @@ void CandidateList::destroyList() //used in destructor
     Node* current = first; //node that will traverse the list
     while (current != nullptr) //runs as long as current isn't null (deletes the list).
     {
-        first = first -> getLink();
-        delete current;
+        first = first -> getLink(); //traverses the list
+        delete current; //deletes the node
         current = first;
     }
-    //first = nullptr;
     last = nullptr;
     count = 0;
 }
 
 CandidateList::~CandidateList() //destructor
 {
-    destroyList(); //deletes the list
+    destroyList(); //deletes the node list
 }
 
-/*
- CandidateList::CandidateList(const CandidateList& object) //copy constructor NOT CORRECT.
+
+
+CandidateList::CandidateList(const CandidateList& object) //copy constructor
 {
-    count = object.count;
-    first = object.first;
-    last = object.last;
+    if(object.count == 0) //If original(object) list is empty
+    {
+        first = nullptr;
+        count = 0;
+        last = nullptr;
+    }
+    else
+    {
+        count = object.count;
+        first = new Node(*object.first); //dereference and gives data of first node of original to the copy
+        if (!first)
+        {
+            std::cout << "Error: Memory Allocation failed\n";
+        }
+        Node* traverseNewList = first; //will traverse the new list starting at first node
+        Node* traverseOriginalList = object.first->getLink(); //will traverse the original list
+        for (int i = 1; i < count; i++) //stops when it reaches the end of the list
+        {
+            Node* newCandidateList = new Node(*traverseOriginalList); //newCandidateList will
+            if (!newCandidateList) //checks to see if allocation worked correctly
+            {
+                std::cout << "Error: Memory Allocation Failed\n";
+            }
+            traverseNewList->setLink(newCandidateList); //sets the next pointer to newCandidateList
+            traverseNewList = newCandidateList; //gives the value of newCandidateList to the traverseList
+            traverseOriginalList = traverseOriginalList->getLink(); //traverses the original list
+            if (i == count - 1)
+            {
+                last = traverseNewList; // puts last to the end of the list
+            }
+        }
+    }
 }
-*/
-/*
+
+
+
  CandidateList& CandidateList::operator=(const CandidateList& rightSide) //overloaded assignment operator. NOT CORRECT.
 {
     if (this != &rightSide)
     {
+        destroyList(); //cleans list and fixes any memory allocation leaks
         count = rightSide.count;
-        first = rightSide.first;
-        last = rightSide.last;
+        first = new Node(*rightSide.first); //dereference and gives data of first node of original to the copy
+        if (!first)
+        {
+            std::cout << "Error: Memory Allocation failed\n";
+            return *this;
+        }
+        Node* traverseNewList = first; //will traverse the new list starting at first node
+        Node* traverseOriginalList = rightSide.first->getLink(); //will traverse the original list
+        for (int i = 1; i < count; i++) //stops when it reaches the end of the list
+        {
+            Node* newCandidateList = new Node(*traverseOriginalList); //newCandidateList will
+            if (!newCandidateList) //checks to see if allocation worked correctly
+            {
+                std::cout << "Error: Memory Allocation Failed\n";
+                return *this;
+            }
+            traverseNewList->setLink(newCandidateList); //sets the next pointer to newCandidateList
+            traverseNewList = newCandidateList; //gives the value of newCandidateList to the traverseList
+            traverseOriginalList = traverseOriginalList->getLink(); //traverses the original list
+            if (i == count - 1)
+            {
+                last = traverseNewList; // puts last to the end of the list
+            }
+        }
     }
     else
     {
@@ -194,7 +260,7 @@ CandidateList::~CandidateList() //destructor
     }
     return *this;
 }
-*/
+
 
 void CandidateList::printFinalResults() const
 {
