@@ -1,6 +1,14 @@
 /*
-    Name header
- */
+ 
+ Gurshaan Maan, Muhammad Jafri, Giovanni Flores, Braiden Nagele
+
+ CMPR 121 - SPRING 2024
+ June 2 2024
+
+ Final Project Submission
+ 
+ Collaborations: https://www.youtube.com/watch?v=RNMIDj62o_o&t=955s, https://www.youtube.com/watch?v=HKfj0l7ndbc, https://www.youtube.com/watch?v=rJlJ8qqVm3k, class notes, chatgpt, Professor A
+*/
 #pragma once
 #ifndef PERSONTYPE_H
 #define PERSONTYPE_H
@@ -16,29 +24,29 @@ public:
     PersonType();
 
     //Overloaded constructor
-    PersonType(std::string userFirstName, std::string userLastName, int userSSN);
+    PersonType(std::string userFirstName, std::string userLastName, int userSSN); //updates private variables with parameter
 
     //Destructor
     ~PersonType();
 
-    std::string getFirstName() const;
-    std::string getLastName() const;
-    int getSSN() const;
+    std::string getFirstName() const; //returns first name
+    std::string getLastName() const;  //returns last name
+    int getSSN() const; //returns SSN
 
-    void setPersonInfo(std::string userFirstName, std::string userLastName, int userSSN);
+    void setPersonInfo(std::string userFirstName, std::string userLastName, int userSSN); //updates private variables
 
 
     //other functionality
 
-    void printName() const;
-    void printPersonInfo();
-    void printSSN();
+    void printName() const; //prints candidates name
+    void printPersonInfo() const; //formats candidates SSN with dashes and then prints it
+    void printSSN() const; //prints candidates SSN & name
 
 
 private:
-    std::string fName;
-    std::string lName;
-    int SSN;
+    std::string fName; //first name
+    std::string lName; //last name
+    int SSN; 
 
 };
 #endif
