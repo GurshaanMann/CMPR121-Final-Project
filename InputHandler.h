@@ -1,3 +1,14 @@
+/*
+ 
+ Gurshaan Maan, Muhammad Jafri, Giovanni Flores, Braiden Nagele
+
+ CMPR 121 - SPRING 2024
+ June 2 2024
+
+ Final Project Submission
+ 
+ Collaborations: https://www.youtube.com/watch?v=RNMIDj62o_o&t=955s, https://www.youtube.com/watch?v=HKfj0l7ndbc, https://www.youtube.com/watch?v=rJlJ8qqVm3k, class notes, chatgpt, Professor Alweheiby
+*/
 #pragma once
 #ifndef InputHandler_h
 #define InputHandler_h
