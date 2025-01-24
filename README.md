@@ -1,9 +1,3 @@
-ALMOST DONE BOYS
-FUCK C++
-
-
-
-
 WRITE UP: https://rsccd-my.sharepoint.com/:w:/g/personal/gf42555_student_sccollege_edu/EQ-ifOZb825FghrcWG-Dop8Bm537mJ_Sx-VFZlcaKbdFJw?e=jxitaw
 
 NEED HELP WITH THESE
